@@ -1,0 +1,43 @@
+.font-weight-bold {
+  font-weight: initial;
+  color: black;
+  font-size: xxx-large;
+}
+.font-weight-light {
+  font-weight: initial;
+  color: black;
+}
+.mat-list-base {
+  margin-top: 10vh;
+}
+.rounded {
+  border-radius: 5.25px;
+  width: auto;
+  height: 92%;
+}
+.mat-grid-list {
+  max-width: 1144px;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 30px;
+}
+
+.map-frame {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}

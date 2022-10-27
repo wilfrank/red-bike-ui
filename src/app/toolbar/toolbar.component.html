@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Red de ciclistas</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/home'"> Inicio </a>
+      <a mat-button [routerLink]="'/create-account'"> Nosotros </a>
+      <a [class.hide]="!_user" mat-button [routerLink]="'/bike'">
+        Bicicletas
+      </a>
+      <a mat-button [routerLink]="'/create-contact'"> Contactos </a>
+    </div>
+    <button mat-icon-button [class.hide]="!_user" (click)="logOut()">
+      <mat-icon>power_off</mat-icon>
+    </button>
+    <button mat-icon-button [class.hide]="_user" (click)="logIn()">
+      <mat-icon>person</mat-icon>LogIn
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

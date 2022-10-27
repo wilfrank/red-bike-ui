@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment #Create application
+metadata:
+  name: rbui #Deployment Name!!
+  labels:
+    app: rbui
+    version: "1.0"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rbui
+  template:
+    metadata:
+      labels:
+        app: rbui
+        version: "1.0"
+    spec:
+      containers:
+        - name: rbui
+          image: uk.icr.io/eafitns/rbui
+          ports:
+            - name: http-server
+              containerPort: 8082

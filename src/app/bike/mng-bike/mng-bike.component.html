@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>{{ _bike ? "Editar" : "Crear" }} Bicicleta</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <p>
+        <mat-label>ID: {{ _bike?.Key }}</mat-label>
+      </p>
+      <p>
+        <mat-form-field>
+          <label>Color</label>
+          <mat-select formControlName="color">
+            <mat-option *ngFor="let color of colors" [value]="color">
+              {{ color }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <label>Modelo</label>
+          <mat-select formControlName="model">
+            <mat-option *ngFor="let model of models" [value]="model">
+              {{ model }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Latitud"
+            formControlName="latitud"
+          />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Longitud"
+            formControlName="longitud"
+          />
+        </mat-form-field>
+      </p>
+      <div class="button">
+        <button color="accent" mat-button>Guardar</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

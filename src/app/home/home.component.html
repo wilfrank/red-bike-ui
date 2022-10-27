@@ -1,0 +1,52 @@
+<app-toolbar
+  [user]="user"
+  (logOutEM)="onLogOut($event)"
+  (logInEM)="onLogIn($event)"
+></app-toolbar>
+<mat-grid-list cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <img
+      src="./../../assets/img/MountainBikerDownRock-1024x683.jpg"
+      alt="Bike"
+      class="rounded"
+    />
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-list>
+      <mat-list-item>
+        <h1 class="font-weight-bold">Red de Bicicletas</h1>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 class="font-weight-light">
+          Primer red de Bicicleteros Urbanos, Inscribete y disfruta
+        </h3>
+      </mat-list-item>
+      <mat-list-item>
+        <h3 class="font-weight-light" *ngIf="user">
+          <div style="display: flex">Bienvenido {{ user?.name }}</div>
+        </h3>
+        <button
+          *ngIf="!user"
+          mat-raised-button
+          color="accent"
+          (click)="signInHere()"
+        >
+          Inscribete aqui
+        </button>
+      </mat-list-item>
+    </mat-list>
+    <mat-dialog-content> </mat-dialog-content>
+  </mat-grid-tile>
+  <mat-grid-tile
+    [colspan]="2"
+    [style.background]="'gray'"
+    [style.height]="'21%'"
+  >
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+  </mat-grid-tile>
+  <!-- <mat-grid-tile [colspan]="2" [rowspan]="1">footer here..</mat-grid-tile> -->
+</mat-grid-list>

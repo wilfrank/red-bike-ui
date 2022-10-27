@@ -1,0 +1,72 @@
+<app-toolbar [user]="user" (logOutEM)="onLogOut($event)"></app-toolbar>
+<table mat-table [dataSource]="bikes" class="mat-elevation-z8">
+  <caption>
+    Red de Bicicletas
+    <div [style.float]="'right'">
+      <button mat-raised-button color="accent" (click)="openNewBike()">
+        Nueva Bicicleta
+      </button>
+    </div>
+  </caption>
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let element; let i = index">
+      <label (click)="edit(element)" [style.cursor]="'pointer'"
+        >{{ i + 1 }} <mat-icon>edit</mat-icon></label
+      >
+    </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef>Color</th>
+    <td mat-cell *matCellDef="let element">{{ element?.color }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef>Modelo</th>
+    <td mat-cell *matCellDef="let element">{{ element?.model }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="lat">
+    <th mat-header-cell *matHeaderCellDef>Ubicacion</th>
+    <td mat-cell *matCellDef="let element">
+      <a (click)="showPosition(element)" [style.cursor]="'pointer'"
+        >{{ element?.latitud }}/{{ element?.longitud }}
+        <mat-icon>place</mat-icon>
+      </a>
+      <button
+        *ngIf="element.isRented"
+        mat-button
+        (click)="releaseBike(element)"
+        title="Liberar bici"
+      >
+        <mat-icon [style.color]="'red'">lock_outline</mat-icon>
+      </button>
+      <button
+        *ngIf="!element.isRented"
+        mat-button
+        (click)="rentBike(element)"
+        title="Reservar bici"
+      >
+        <mat-icon [style.color]="'green'">lock_open</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="delete(element)" color="warn" mat-button>
+        Eliminar
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

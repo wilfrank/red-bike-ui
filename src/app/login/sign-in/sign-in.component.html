@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-title>Registrate</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="formGroup" (ngSubmit)="submit()">
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            type="text"
+            placeholder="Nombre"
+            formControlName="name"
+        /></mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            type="email"
+            placeholder="email"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+            (input)="onPasswordInput()"
+          />
+          <span *ngIf="password?.hasError('required')"
+            >Password is required</span
+          >
+          <span *ngIf="password?.hasError('minlength')"
+            >Password must have at least {{ minPw }} characters</span
+          >
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input
+            matInput
+            type="password"
+            placeholder="Confirm password"
+            formControlName="password2"
+            (input)="onPasswordInput()"
+          />
+          <span *ngIf="password2?.hasError('required')">
+            Please confirm your password
+          </span>
+          <span *ngIf="password2?.invalid && !password2?.hasError('required')">
+            Passwords don't match
+          </span>
+        </mat-form-field>
+      </p>
+      <div class="button">
+        <button color="accent" type="submit" mat-button>Crear</button>
+      </div>
+    </form>
+  </mat-card-content></mat-card
+>
