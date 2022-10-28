@@ -34,7 +34,7 @@ jobs:
       - name: Install Dependencies
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
-          npm install
+          npm run install
         run: |
           npm ci
       - name: Build
