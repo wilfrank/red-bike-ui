@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing node 16.10
+      - echo Installing source NPM dependencies...
+      - npm install
+      - npm install -g @angular/cli@12.0
+  build:
+    commands:
+      - echo Build started
+      - ng build
+  post_build:
+    commands:
+      - echo Buil completed on `date`
+# reports:
+# TODO: Agregarr reportes de pruebas unitarias
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist*'
+  discard-paths: yes
