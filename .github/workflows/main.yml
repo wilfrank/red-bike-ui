@@ -1,4 +1,4 @@
-version: 0.2
+name: Angular GitHub CI
 on:
   push:
     branches: [ main ]
